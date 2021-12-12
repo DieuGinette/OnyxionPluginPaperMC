@@ -1,0 +1,106 @@
+#  Config File for the Lobby World plugin.
+
+Command:
+    BlockWhenInCombat: true
+    #Prevents using the /lobby command while in combat! Combat gets initiated when the player takes or deals damage.
+    CombatSeconds: 10
+    #How many seconds until the player is no longer in combat.
+    CooldownSeconds: 3
+    #How many seconds until the player can use the command again. Set to 0 to disable.
+    RequiresPermission: false
+    #Should the command require a permission to use?
+    #The permission is "lobbyworld.command"
+    ReturnToPreviousLocation: true
+    #If enabled, returns the player to the previous location when used in the lobby.
+    DefaultDestination:
+        World: lobby
+        #Where the command in the lobby will take you if ReturnToPreviousLocation is disabled or if the plugin does not remember your previous location.
+        OverrideCoordinates: false
+        #If set to true, you can specify the destination coordinates. If set to false, will use the destination world's spawn.
+        Coordinates:
+            X: -135
+            Y: 31
+            Z: 184
+        #Will only work if OverrideCoordinates is set to true.
+
+Lobby:
+    World: lobby
+    #What world is used for the lobby.
+    #If the specified world does not exist, it will be created automatically.
+    OverrideDefaultSpawnLocation: true
+    #If enabled, players without a bed or respawn anchor will be teleported to the lobby. This also applies to new players who have never played in your server before.
+    UseDefaultLobbyGamerules: true
+    #Sets the plugin's own gamerules for the lobby world. Disable if you want to set them yourself.
+    #These don't affect your default worlds.
+    #Sets these gamerules in the lobby world:
+    # - doMobSpawning = false
+    # - doMobLoot = false
+    # - spectatorsGenerateChunks = false
+    # - naturalRegeneration = false
+    # - randomTickSpeed = 0
+    # - doTileDrops = false
+    # - doDaylightCycle = (if TimeBehavior is 1 then false, else true.)
+    # - doWeatherCycle = (if TimeBehavior is 1 then false, else true.)
+    BlockModification: true
+    #Prevents players from modifying & interacting with the lobby area.
+    #This can be bypassed if the user modifying it is in creative mode and has the permission "lobbyworld.modify"
+    #Disable this if you use another plugin to block modification.
+    InteractWhitelist: [CHEST, ENDER_CHEST, OAK_DOOR, SPRUCE_DOOR, BIRCH_DOOR, JUNGLE_DOOR, ACACIA_DOOR, DARK_OAK_DOOR]
+    #Allows Interacting with these blocks when block modification is enabled.
+    BlockHealing: true
+    #Prevents players from regenerating health in the lobby.
+    BlockHungerChange: true
+    #Prevents players from restoring or losing hunger in the lobby. Also prevents players from consuming any food.
+    InvulnerablePlayers: true
+    #Prevents players from taking damage in the lobby, also prevents players from falling into the void.
+    BlockItemDropping: true
+    #Prevents players from dropping items in the lobby.
+    TimeBehavior: 0
+    #Select how time is managed in the lobby world!
+    # 0 = not affected by plugin (default)
+    # 1 = frozen, allowing you to set it to a specific time, (Sets the DO_DAYLIGHT_CYCLE and DO_WEATHER_CYCLE gamerules to false if use lobby gamerules is enabled!)
+    # 2 = synchronized with Command.DefaultDestination.World
+    LobbyTime: 0
+    #If TimeBehavior is set to 1, freezes the time to this tick.
+    EndPortals:
+        OverrideDestination: true
+        #If enabled, follows same rules as using /lobby from the lobby.
+    NetherPortals:
+        OverrideDestination: true
+        #If enabled, follows same rules as using /lobby from the lobby.
+    ShowMessageIfTeleportedWithPortal: false
+    #If enabled will show teleport message when teleporting with a portal.
+
+Messages:
+    #Chat messages for various actions in the plugin.
+    #Set 'enabled' to false to disable a message from appearing.
+    #Use $ for chat format.
+    CommandConsoleError: 
+        Message: $c$lOnyxion » Vous ne pouvez pas utiliser cette commande depuis la console!
+        Enabled: true
+        #Shown when you attempt to use /lobby from the console.
+    CommandPermissionError: 
+        Message: $c$lOnyxion » Vous n'avez pas la permission d'utiliser cette commande.!
+        Enabled: true
+        #Shown when you attempt to use /lobby but don't have the permission.
+    CommandCombatError: 
+        Message: $c$lOnyxion » Vous ne pouvez pas utiliser cette commande pendant un combat.!
+        Enabled: true
+        #Shown when you attempt to use /lobby while in combat.
+    CommandCooldownError: 
+        Message: $c$lOnyxion » Cette commande est en train de refroidir!
+        Enabled: true
+        #Shown when you attempt to use /lobby while it's cooling down.
+    CommandSuccess: 
+        Message: $f$lOnyxion » Teleporte dans le lobby ! Utilise /lobby a nouveau pour te teleporter en arriere!
+        Enabled: true
+        #Shown when you successfully teleport to the lobby.
+    CommandSuccessReturn: 
+        Message: $f$lOnyxion » Teleporte a l'emplacement precedent !
+        Enabled: true
+        #Shown when you teleport back to your previous location.
+    CommandSuccessReturnNoPreviousLocation: 
+        Message: $f$lOnyxion » Teleportation !
+        Enabled: true
+        #Shown when you teleport back.
+        

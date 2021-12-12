@@ -1,0 +1,13 @@
+name: Onyxion
+version: 1.1
+author: DieuGinette
+website: https://www.onyxion.fr
+api-version: 1.16
+
+main: fr.dieuginette.onyxion.Main
+description: Plugin principale du serveur Onyxion
+
+commands:
+    lobby:
+        description: Teleporte le joueur au lobby
+        usage: /lobby
